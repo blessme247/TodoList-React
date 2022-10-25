@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family:  Helvetica, Arial, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #2C3E50;
+}
+header {
+    height: 4rem;
+    background: #2E7C59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.nav-section {
+    background-color: white;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #2E7C59;
+}
+.active {
+    color: #42b983;
+    font-weight: 600;
+}
+
+.add-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+  }
+  .text-box {
+    border: none;
+    flex-grow: 2;
+  }
+  .text-box:focus {
+    outline: none;
+  }
+  .add-btn {
+    background: #2E7C59;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 6rem;
+    border: none;
+  }
+  .update-btn {
+    background: #00afef;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 6rem;
+    border: none;
+    display: none;
+  }
+.list-items {
+    display: flex;
+    justify-content: space-between;
+    background: #f4f4f4;
+    color: #2C3E50;
+    height: 3rem;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 0 2rem;
+}
+.checked {
+    text-decoration: line-through;
+    color: #2E7C59 ;
+}
+.item-right {
+    display: flex;
+    align-items: center;
+}
+.item-right div + div {
+    margin-left: 2rem;
+}
+
+.close {
+    color: #2C3E50;
+}
+.close:hover, .edit-btn:hover {
+    cursor: pointer;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    color: #2E7C59 ;
+}
+.footer p {
+    color: #2E7C59 ;
+    text-align: center;
+}
+.footer a {
+    color: #2E7C59;
+}
+
+.red-color {
+    color: red;
+}
+.blue-color {
+    color: blue;
+}
