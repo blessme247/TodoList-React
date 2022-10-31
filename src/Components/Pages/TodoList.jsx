@@ -1,31 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { ListSection } from "./ListSection";
 import "./todolist.css";
-import { useState } from "react";
-import { Navbar } from "./Navbar";
 import { Input } from "./Input";
 import { Footer } from "./Footer";
-import { TodoListContainer } from "./TodoListContainer";
+import TodoListHeader from "./TodoListHeader";
 
-export const TodoList = ({todos, settodos}) => {
-  // const [greetingText, setGreetingText] = useState("Hello")
+ const TodoList = ({ todos, settodos, isLoading }) => {
   return (
     <div>
-      <header>
-        <h1>TodoList</h1>
-      </header>
+      <TodoListHeader />
 
-      <Navbar />
+      <Input todos={todos} settodos={settodos} />
 
-      <Input todos={todos} settodos={settodos}/>
+      <>
+        {isLoading && <p style={{textAlign: 'center'}}>Loading</p>}
 
-    <> 
-        {todos.map((todo)=>{
-            return <ListSection todo={todo} key={todo._id} todos={todos} settodos={settodos}/>
-        } )}
-      
+        {!isLoading && todos.length < 1 && 
+        (<p style={{textAlign: 'center'}}>No records found</p>)}
+
+        {todos.map((todo) => {
+          return (
+            <ListSection
+              todo={todo}
+              key={todo.id}
+              todos={todos}
+              settodos={settodos}
+            />
+          );
+        })}
       </>
-      {/* <TodoListContainer /> */}
       <Footer />
     </div>
   );

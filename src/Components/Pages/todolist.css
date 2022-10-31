@@ -82,6 +82,10 @@ header {
     margin-left: 2rem;
 }
 
+.view-more-icon {
+    margin-right: 2rem;
+}
+
 .close {
     color: #2C3E50;
 }

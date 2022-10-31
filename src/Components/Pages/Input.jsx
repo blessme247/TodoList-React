@@ -11,7 +11,7 @@ export const Input = ({todos, settodos, button}) => {
 
   const addTodo = ()=> {
     const newTodo = {
-      _id: crypto.randomUUID(),
+      id: crypto.randomUUID(),
       title: todoText,
       isCompleted: false,
     };
@@ -29,8 +29,8 @@ export const Input = ({todos, settodos, button}) => {
     <React.Fragment>
       <section className="add-section">
         <TodoTextInput todotext={todoText} setTodoText={setTodoText}/>
-        <InputButton className="add-btn" func={addTodo} />
-        {/* <button className="add-btn" onClick={addTodo}>Add New</button> */}
+        <button className="add-btn" onClick={addTodo}>Add New</button>
+        {/* <InputButton className="add-btn" func={addTodo} /> */}
         {/* <button className="update-btn">Update</button> */}
       </section>
     </React.Fragment>
