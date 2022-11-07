@@ -4,8 +4,10 @@ import "./todolist.css";
 import { Input } from "./Input";
 import { Footer } from "./Footer";
 import TodoListHeader from "./TodoListHeader";
+import DonutSpinner from "../Loader/DonutSpinner";
+import { BallTriangle } from "react-loader-spinner";
 
- const TodoList = ({ todos, settodos, isLoading }) => {
+ const TodoList = ({ todos, settodos, isLoading, fetchTodos }) => {
   return (
     <div>
       <TodoListHeader />
@@ -13,7 +15,9 @@ import TodoListHeader from "./TodoListHeader";
       <Input todos={todos} settodos={settodos} />
 
       <>
-        {isLoading && <p style={{textAlign: 'center'}}>Loading</p>}
+      {/* {isLoading && <DonutSpinner/>} */}
+
+      {isLoading && <BallTriangle />}
 
         {!isLoading && todos.length < 1 && 
         (<p style={{textAlign: 'center'}}>No records found</p>)}
@@ -21,6 +25,7 @@ import TodoListHeader from "./TodoListHeader";
         {todos.map((todo) => {
           return (
             <ListSection
+              fetchTodos={fetchTodos}
               todo={todo}
               key={todo.id}
               todos={todos}

@@ -1,38 +1,90 @@
-import React, {useState} from "react";
-import InputButton from "./InputButton";
-// import { SpanButton } from "./SpanButton";
+// External Imports
+import React, { useState } from "react";
+import { Formik} from "formik";
+import axios from 'axios'
+
+// Internal Imports
 import "./todolist.css";
-import {TodoTextInput } from "./TodoTextInput"
+import { TodoTextInput } from "./TodoTextInput";
 
-export const Input = ({todos, settodos, button}) => {
-  
-  const [todoText, setTodoText] = useState("")
-  // console.log(todoText)
 
-  const addTodo = ()=> {
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title: todoText,
-      isCompleted: false,
-    };
-    // console.log(newTodo)
-  const updatedTodos = [...todos, newTodo]; 
-  settodos(updatedTodos);
-  // localStorage.setItem(todoDBName, JSON.stringify(updatedTodos))
+
+
+export const Input = ({ todo, todos, settodos}) => {
+  // const [todoText, setTodoText] = useState(""); 
+  // const { title} = todo;
+  const [update, hideUpdate] = useState(false)
+
+  // const addTodo = () => {     // Without Formik
+  //   const newTodo = {
+  //     id: crypto.randomUUID(),
+  //     title: "",
+  //     isCompleted: false,
+  //   };
+  //   // console.log(newTodo)
+  //   const updatedTodos = [...todos, newTodo];
+  //   settodos(updatedTodos);
+  //   // localStorage.setItem(todoDBName, JSON.stringify(updatedTodos))
+  // };
+
+  const addTodo = async (title) => {
+    const newTodo = { title };
+
+    try {
+      console.log("Making Request")
+      const response = await axios.post("http://localhost:8080/add", {title}, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+      console.log("Request Completed")
+      console.log(response)
+      const updatedTodos = [...todos, newTodo];
+       settodos(updatedTodos);
+    } catch (error) {
+      
+    }
+
   }
-
-  // Add user todo input to the local storage
-  
 
 
   return (
+
     <React.Fragment>
+
+<Formik
+       initialValues={{ title: '' }}
+       onSubmit={(values, { setSubmitting }) => {
+         addTodo(values.title);
+       }}
+     >
+       {({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         /* and other goodies */
+       }) => (
+        <>
+        <pre>{JSON.stringify(values, 2, null)}</pre>
+         <form onSubmit={handleSubmit}>     
       <section className="add-section">
-        <TodoTextInput todotext={todoText} setTodoText={setTodoText}/>
-        <button className="add-btn" onClick={addTodo}>Add New</button>
-        {/* <InputButton className="add-btn" func={addTodo} /> */}
-        {/* <button className="update-btn">Update</button> */}
+        {/* <TodoTextInput todotext={todoText} setTodoText={setTodoText} />    Without Formik */}
+        <TodoTextInput name="title" handleChange={handleChange} value={values.title}/> 
+        <button type="submit" className="add-btn" onClick={addTodo}>
+          Add New
+        </button>
+       {update ? <button className="update-btn">Update</button> : null}
+
       </section>
+         </form>
+         </>
+       )}
+     </Formik>
+
     </React.Fragment>
   );
 };

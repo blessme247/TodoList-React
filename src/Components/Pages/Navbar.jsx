@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './todolist.css' 
 
 export const Navbar = () => {
   return (
     <React.Fragment>
       <nav className= "nav-section" >
-        <a href="#index.html" className="home active">Home</a>
+        <Link to = "/"  className="home active">Home</Link>
         <br/>
         <span className="menu-divide">||</span>
         <br/> <br/>
-        <a href="#about.html" className="about-page">About</a>
+        <Link to = "" className="about-page">About</Link>
     </nav>
         </React.Fragment>
   )
