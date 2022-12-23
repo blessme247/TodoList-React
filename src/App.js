@@ -11,6 +11,7 @@ import TodoList from './Components/Pages/TodoList';
 import TodoDetails from './Components/Pages/TodoDetails';
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axiosInstance from './Helper/AxiosConfig/axiosConfig';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   const fetchTodos = async () => {
-    const response = await axios.get("http://localhost:8080/todos")
+    const response = await axiosInstance.get("/todos")
 
     setTodos(response.data.data)
     setIsLoading(false)

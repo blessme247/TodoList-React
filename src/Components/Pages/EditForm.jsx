@@ -7,9 +7,10 @@ import axios from "axios";
 import "./todolist.css";
 import { TodoTextInput } from "./TodoTextInput";
 import { toast } from "react-toastify";
+import axiosInstance from "../../Helper/AxiosConfig/axiosConfig";
 
 export const EditForm = (props) => {
-  const { todo, todos, settodos, todoToEdit, fetchTodos,  } = props;
+  const { todo, todos, settodos, todoToEdit, fetchTodos, setEditMode  } = props;
   const {id, title, isCompleted} = todoToEdit;
 
   const initialValues= {
@@ -21,11 +22,12 @@ export const EditForm = (props) => {
 
 //Update todo function
   const  updateTodo = async (id, title) => {
-    const response = await axios
-      .post(`http://localhost:8080/edit`,{id, title}) // Update from DB first
+    const response = await axiosInstance
+      .post(`/edit`,{id, title}) // Update from DB first
       .then((response) => {
         console.log(todoToEdit, 'update')
         fetchTodos().then(()=>{
+          setEditMode(false)
             toast.success("Todo Updated Successfully", {
               position: "top-center",
             });

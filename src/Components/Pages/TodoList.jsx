@@ -10,6 +10,7 @@ import DeleteConfirmation from "../Modal/DeleteConfirmation";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { EditForm } from "./EditForm";
+import axiosInstance from "../../Helper/AxiosConfig/axiosConfig";
 
  const TodoList = ({ todos, settodos, isLoading, fetchTodos}) => {
   const [isDeleting, setisDeleting] = useState(false)
@@ -29,8 +30,8 @@ import { EditForm } from "./EditForm";
   }
 
   function deleteTodo() {
-    const response = axios
-      .post(`http://localhost:8080/delete/${todoToDelete}`) // Delete from DB first
+    const response = axiosInstance
+      .post(`/delete/${todoToDelete}`) // Delete from DB first
       .then((response) => {
         //  window.location.reload() // FOURTH METHOD
          // FIFTH METHOD (BEST); Because it doesn't cause the UI to re-render
@@ -61,7 +62,7 @@ import { EditForm } from "./EditForm";
       handleCancel={handleCancel}
       /> : <React.Fragment>
 
-      {editMode ? <EditForm todoToEdit={todoToEdit} todos={todos} fetchTodos={fetchTodos}/> :  <Input todos={todos} settodos={settodos} />}
+      {editMode ? <EditForm todoToEdit={todoToEdit} setEditMode={setEditMode} todos={todos} fetchTodos={fetchTodos}/> :  <Input todos={todos} settodos={settodos} />}
       
 
 

@@ -6,6 +6,7 @@ import axios from "axios";
 // Internal Imports
 import "./todolist.css";
 import { TodoTextInput } from "./TodoTextInput";
+import axiosInstance from "../../Helper/AxiosConfig/axiosConfig";
 
 export const Input = (props) => {
   const { todo, todos, settodos, } = props;
@@ -30,7 +31,7 @@ export const Input = (props) => {
     const newTodo = { title };
 
     try {
-      const response = await axios.post("http://localhost:8080/add", { title });
+      const response = await axiosInstance.post("/add", { title });
       const updatedTodos = [...todos, newTodo];
       settodos(updatedTodos);
     } catch (error) {}
@@ -41,6 +42,7 @@ export const Input = (props) => {
       <Formik
         initialValues={{ title: "" }}
         onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true)
           addTodo(values.title);
         }}
       >
@@ -62,7 +64,7 @@ export const Input = (props) => {
                   handleChange={handleChange}
                   value={values.title}
                 />
-                  <button type="submit" className="add-btn" onClick={addTodo}>
+                  <button type="submit"  className="add-btn" onClick={addTodo}>
                     Add New
                   </button>
               </section>
