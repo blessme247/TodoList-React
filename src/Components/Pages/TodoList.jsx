@@ -15,6 +15,11 @@ import { EditForm } from "./EditForm";
   const [isDeleting, setisDeleting] = useState(false)
   const [todoToDelete, setTodoToDelete] = useState(null)
 
+  
+  const [todoToEdit, setTodoToEdit] = useState({});
+  const {id, title, isCompleted } = todoToEdit;
+
+  //State to toggle add and update buttons
   const [editMode, setEditMode] = useState(false)
 
 
@@ -56,7 +61,7 @@ import { EditForm } from "./EditForm";
       handleCancel={handleCancel}
       /> : <React.Fragment>
 
-      {editMode ? <EditForm todos={todos}/> :  <Input todos={todos} settodos={settodos} />}
+      {editMode ? <EditForm todoToEdit={todoToEdit} todos={todos} fetchTodos={fetchTodos}/> :  <Input todos={todos} settodos={settodos} />}
       
 
 
@@ -80,6 +85,7 @@ import { EditForm } from "./EditForm";
               key={todo.id}
               todos={todos}
               settodos={settodos}
+              setTodoToEdit={setTodoToEdit}
               setEditMode={setEditMode}
             />
           );

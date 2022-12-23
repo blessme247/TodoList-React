@@ -22,11 +22,9 @@ function App() {
 
     setTodos(response.data.data)
     setIsLoading(false)
-    // toast.success("Todos Successfully Fetched", {position: "top-center"})
   }
     //  We use useEffect to prevent the function from making continous API calls which could break the server
   useEffect(()=>{
-    console.log("Load and Update when todos updates")
     
     fetchTodos();
 

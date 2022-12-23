@@ -10,9 +10,9 @@ import DeleteConfirmation from "../Modal/DeleteConfirmation";
 
 export const ListSection = (props) => {
   const { todo_id } = useParams();
-  const { todo, todos, settodos, fetchTodos, setisDeleting, setTodoToDelete, setEditMode } = props;
+  const { todo, todos, settodos, fetchTodos, setisDeleting, setTodoToDelete, setEditMode, setTodoToEdit } = props;
   const { id, title, isCompleted} = todo; 
-  // console.log(props);
+ 
 
   const [show, setShow] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
@@ -25,42 +25,6 @@ export const ListSection = (props) => {
     setTodoToDelete(id)
   }
 
-
-  //We don't need to pass a parameter here because the deleteTodo function is being created each time we are mapping and returning the Listsection component which has access to the id
-  // FIRST Deletion Method
-  // async function deleteTodo() {
-
-  //     try {
-  //         const response = await axios.post(`http://localhost:8080/delete/${id}`) // Delete from DB First
-
-  //     const updatedTodos = todos.filter((todo)=> todo.id !== id) // then Delete from state
-  //     settodos(updatedTodos) // Finally, Update State
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-
-  // }
-
-  // SECOND Deletion Method using .then
-  // The .then method is asynchronous by default which  doesn't need async await keywords
-
-  // function deleteTodo() {
-  //    const response = axios.post(`http://localhost:8080/delete/${id}`) // Delete from DB first
-  //     .then((response)=> {
-  //         const updatedTodos = todos.filter((todo)=> todo.id !== id) // then Delete from state
-  //         settodos(updatedTodos) // Finally, Update State...Note: Since the backend is already helping us to delete the todo,
-  //         return (response)      // it is not advisable to use the filter method. The filter method could be very expensive when we have large data.
-  //     })
-  //     .catch((error)=>{
-  //         console.log(error)
-  //     })
-
-  //     return response;
-  // }
-
-  // THIRD Deletion Method
-  // SECOND Deletion Method using .then
-  // The .then method is asynchronous by default which  doesn't need async await keywords
 
  
   // Toggle Complete
@@ -77,8 +41,10 @@ export const ListSection = (props) => {
   }
 
   //Edit todo
-  function editMode() {
-    const todoToEdit = todos.find((todo) => todo.id === id);
+  function editMode(todo) {
+    // const todoToEdit = todos.find((todo) => todo.id === id);
+    console.log(todo)
+    setTodoToEdit(todo)
     setEditMode(true)
     
     
@@ -104,7 +70,7 @@ export const ListSection = (props) => {
               👁️
             </Link>
             <TodoActionButton
-              func={editMode}
+              func={() => editMode(todo)} 
               classname={"edit-btn"}
               icon="✍️"
             />
