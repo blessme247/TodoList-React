@@ -9,10 +9,13 @@ import { BallTriangle } from "react-loader-spinner";
 import DeleteConfirmation from "../Modal/DeleteConfirmation";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { EditForm } from "./EditForm";
 
  const TodoList = ({ todos, settodos, isLoading, fetchTodos}) => {
   const [isDeleting, setisDeleting] = useState(false)
   const [todoToDelete, setTodoToDelete] = useState(null)
+
+  const [editMode, setEditMode] = useState(false)
 
 
   const handleCancel = (id)=> {
@@ -53,7 +56,8 @@ import { toast } from "react-toastify";
       handleCancel={handleCancel}
       /> : <React.Fragment>
 
-      <Input todos={todos} settodos={settodos} />
+      {editMode ? <EditForm todos={todos}/> :  <Input todos={todos} settodos={settodos} />}
+      
 
 
       <>
@@ -76,6 +80,7 @@ import { toast } from "react-toastify";
               key={todo.id}
               todos={todos}
               settodos={settodos}
+              setEditMode={setEditMode}
             />
           );
         })}

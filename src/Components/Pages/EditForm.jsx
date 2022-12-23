@@ -7,41 +7,16 @@ import axios from "axios";
 import "./todolist.css";
 import { TodoTextInput } from "./TodoTextInput";
 
-export const Input = (props) => {
-  const { todo, todos, settodos, } = props;
-
-  // const [todoText, setTodoText] = useState("");
-  // const { title} = todo;
+export const EditForm = (props) => {
+  const { todo, todos, settodos, update } = props;
 
 
-  // const addTodo = () => {     // Without Formik
-  //   const newTodo = {
-  //     id: crypto.randomUUID(),
-  //     title: "",
-  //     isCompleted: false,
-  //   };
-  //   // console.log(newTodo)
-  //   const updatedTodos = [...todos, newTodo];
-  //   settodos(updatedTodos);
-  //   // localStorage.setItem(todoDBName, JSON.stringify(updatedTodos))
-  // };
-
-  const addTodo = async (title) => {
-    const newTodo = { title };
-
-    try {
-      const response = await axios.post("http://localhost:8080/add", { title });
-      const updatedTodos = [...todos, newTodo];
-      settodos(updatedTodos);
-    } catch (error) {}
-  };
 
   return (
     <React.Fragment>
       <Formik
         initialValues={{ title: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          addTodo(values.title);
         }}
       >
         {({
@@ -62,9 +37,9 @@ export const Input = (props) => {
                   handleChange={handleChange}
                   value={values.title}
                 />
-                  <button type="submit" className="add-btn" onClick={addTodo}>
-                    Add New
-                  </button>
+                
+                  <button className="update-btn">Update</button>
+                
               </section>
             </form>
           </>

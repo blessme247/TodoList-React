@@ -10,11 +10,11 @@ import DeleteConfirmation from "../Modal/DeleteConfirmation";
 
 export const ListSection = (props) => {
   const { todo_id } = useParams();
-  const { todo, todos, settodos, fetchTodos, setisDeleting, setTodoToDelete } = props;
+  const { todo, todos, settodos, fetchTodos, setisDeleting, setTodoToDelete, setEditMode } = props;
   const { id, title, isCompleted} = todo; 
-  console.log(props);
+  // console.log(props);
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
 //   const [isDeleting, setisDeleting] = useState(false)
@@ -79,9 +79,9 @@ export const ListSection = (props) => {
   //Edit todo
   function editMode() {
     const todoToEdit = todos.find((todo) => todo.id === id);
-    {
-      // show ? <button className="add-btn" onClick={addTodo}>Add New</button> : <button className="update-btn">Update</button>
-    }
+    setEditMode(true)
+    
+    
   }
 
   return (
@@ -104,7 +104,7 @@ export const ListSection = (props) => {
               👁️
             </Link>
             <TodoActionButton
-              func={() => setShow(false)}
+              func={editMode}
               classname={"edit-btn"}
               icon="✍️"
             />
