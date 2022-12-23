@@ -10,7 +10,9 @@ import { TodoTextInput } from "./TodoTextInput";
 
 
 
-export const Input = ({ todo, todos, settodos}) => {
+export const Input = (props) => {
+  const { todo, todos, settodos} = props;
+
   // const [todoText, setTodoText] = useState(""); 
   // const { title} = todo;
   const [update, hideUpdate] = useState(false)
@@ -28,17 +30,12 @@ export const Input = ({ todo, todos, settodos}) => {
   // };
 
   const addTodo = async (title) => {
-    const newTodo = { title };
+    const newTodo = {title };
 
     try {
       console.log("Making Request")
-      const response = await axios.post("http://localhost:8080/add", {title}, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-      console.log("Request Completed")
-      console.log(response)
+      // const response = await axios.post("http://localhost:8080/add", `title=${title}`)
+      const response = await axios.post("http://localhost:8080/add", {title})
       const updatedTodos = [...todos, newTodo];
        settodos(updatedTodos);
     } catch (error) {
@@ -69,7 +66,7 @@ export const Input = ({ todo, todos, settodos}) => {
          /* and other goodies */
        }) => (
         <>
-        <pre>{JSON.stringify(values, 2, null)}</pre>
+        {/* <pre>{JSON.stringify(values, 2, null)}</pre> */}
          <form onSubmit={handleSubmit}>     
       <section className="add-section">
         {/* <TodoTextInput todotext={todoText} setTodoText={setTodoText} />    Without Formik */}

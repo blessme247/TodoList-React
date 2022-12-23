@@ -20,6 +20,7 @@ const TodoDetails = () => {
         if (response.data.length > 0) {
             setTodo(...response.data)
             setFetching(false)
+            console.log(todo)
         }
         // ELse we set it to an empty object
         else {
