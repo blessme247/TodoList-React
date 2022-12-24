@@ -32,6 +32,7 @@ function App() {
   }, [])
 
   return (
+    <div className="App">
     <React.Fragment >
     <ToastContainer />
     <Routes>
@@ -43,6 +44,7 @@ function App() {
       {/* <PlayGroundForm /> */}
     </Routes>
     </React.Fragment>
+    </div>
   );
   
 }
