@@ -1,5 +1,13 @@
-[type=button], [type=reset], [type=submit], button {
-    /* -webkit-appearance: button; */
-    /* background-color: transparent; */
+/* [type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+    background-color: transparent;
     background-image: none;
+} */
+
+[data-type=add] {
+    background-color: #2e7c59 ;
+}
+
+[data-type=update] {
+    background-color: #00afef;
 }

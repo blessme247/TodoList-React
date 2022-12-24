@@ -64,7 +64,7 @@ export const Input = (props) => {
                   handleChange={handleChange}
                   value={values.title}
                 />
-                  <button type="submit" style={{bacroundColor: '#2e7c59'}}  className="add-btn" onClick={addTodo}>
+                  <button type="submit" style={{bacroundColor: '#2e7c59'}} data-type="add"  className="add-btn" onClick={addTodo}>
                     Add New
                   </button>
               </section>
