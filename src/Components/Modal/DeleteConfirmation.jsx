@@ -2,30 +2,30 @@ import React from "react";
 
 const DeleteConfirmation = ({ info, brief, handleDelete, handleCancel, deleteButtonLabel, cancelButtonLabel }) => {
   return (
-    <section className="antialiased bg-gray-200 text-gray-900 font-sans overflow-x-hidden">
-      <div className="relative px-4 min-h-screen md:flex md:items-center md:justify-center">
-        <div className="bg-black opacity-25 w-full h-full absolute z-10 inset-0"  />
-        <div className="bg-white rounded-lg md:max-w-md md:mx-auto p-4 fixed inset-x-0 bottom-10 z-50 mb-4 mx-4 md:relative">
-          <div className="md:flex items-center">
-            <div className="rounded-full border border-gray-300 flex items-center justify-center w-16 h-16 flex-shrink-0 mx-auto">
-              <i className="bx bx-error text-3xl" />
+    <section className="tw-antialiased tw-bg-gray-200 tw-text-gray-900 tw-font-sans tw-overflow-x-hidden">
+      <div className="tw-relative px-4 tw-min-h-screen tw-md:flex tw-md:items-center tw-md:justify-center">
+        <div className="tw-bg-black tw-opacity-25 tw-w-full tw-h-full tw-absolute tw-z-10 tw-inset-0"  />
+        <div className="tw-bg-white tw-rounded-lg tw-md:max-w-md tw-md:mx-auto tw-p-4 tw-fixed tw-inset-x-0 tw-bottom-10 tw-z-50 tw-mb-4 tw-mx-4 tw-md:relative">
+          <div className="tw-md:flex tw-items-center">
+            <div className="tw-rounded-full tw-border tw-border-gray-300 tw-flex tw-items-center tw-justify-center tw-w-16 tw-h-16 tw-flex-shrink-0 tw-mx-auto">
+              <i className="tw-bx tw-bx-error tw-text-3xl" />
             </div>
-            <div className="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
-              <p className="font-bold">{info}</p>
-              <p className="text-sm text-gray-700 mt-1">{brief}</p>
+            <div className="tw-mt-4 tw-md:mt-0 tw-md:ml-6 tw-text-center tw-md:text-left">
+              <p className="tw-font-bold">{info}</p>
+              <p className="tw-text-sm tw-text-gray-700 tw-mt-1">{brief}</p>
             </div>
           </div>
-          <div className="text-center md:text-right mt-4 md:flex md:justify-end">
+          <div className="tw-text-center tw-md:text-right tw-mt-4 tw-md:flex tw-md:justify-end">
             <button
               onClick={handleDelete}
-              className="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2"
+              className="tw-block tw-w-full tw-md:inline-block tw-md:w-auto tw-px-4 tw-py-3 tw-md:py-2 tw-bg-red-200 tw-text-red-700 tw-rounded-lg tw-font-semibold tw-text-sm tw-md:ml-2 tw-md:order-2"
             >
               {deleteButtonLabel || "Yes"}
             </button>
             <button
               onClick={handleCancel}
-              className="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-gray-200 rounded-lg font-semibold text-sm mt-4
-    md:mt-0 md:order-1"
+              className="tw-block tw-w-full tw-md:inline-block tw-md:w-auto tw-px-4 tw-py-3 tw-md:py-2 tw-bg-gray-200 tw-rounded-lg tw-font-semibold tw-text-sm tw-mt-4
+    tw-md:mt-0 tw-md:order-1"
             >
               {cancelButtonLabel || "Cancel"}
             </button>
