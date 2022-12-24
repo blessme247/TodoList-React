@@ -72,7 +72,7 @@ export const EditForm = (props) => {
                   value={values.title}
                 />
                 
-                  <button className="update-btn" type="button" onClick={handleSubmit}>Update</button>
+                  <button className="update-btn" style={{bacroundColor: '#00afef'}} type="button" onClick={handleSubmit}>Update</button>
                 
               </section>
             </form>
