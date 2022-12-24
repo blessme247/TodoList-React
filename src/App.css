@@ -1,7 +1,7 @@
-/* [type=button], [type=reset], [type=submit], button {
+[type=button], [type=reset], [type=submit], button {
     background-color: #2e7c59 ;
     background-image: none;
-} */
+}
 
 [data-type=add] {
     background-color: #2e7c59 ;
