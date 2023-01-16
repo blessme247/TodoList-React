@@ -50,11 +50,11 @@ const TodoDetails = () => {
             todo &&
             (
 
-            <>
-            <h2>{title.toUpperCase()}</h2>
-            <h3>{id.toUpperCase()}</h3>
-            <p>{isCompleted ? "Done" : "Pending"}</p>
-            </>
+            <div style={{margin:"2rem"}}>
+            <h2>Title: {title.toUpperCase()}</h2>
+            <h3>ID: {id.toUpperCase()}</h3>
+            <p>Status: {isCompleted ? "Done" : "Pending"}</p>
+            </div>
         )}
 
         {!isFetching && todo === null && (
