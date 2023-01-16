@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import TodoListHeader from './TodoListHeader';
 import DonutSpinner from '../Loader/DonutSpinner';
+import axiosInstance from '../../Helper/AxiosConfig/axiosConfig';
 
 
 const TodoDetails = () => {
@@ -14,13 +15,12 @@ const TodoDetails = () => {
     // console.log(todo)
 
     const fetchTodos = async () => {
-        const response = await axios.get(`http://localhost:8080/todos/${todo_id}`)
+        const response = await axiosInstance.get(`/todos/${todo_id}`)
         // Sometimes, response.data comes in form of an empty object if there is no data inside/ or
         //  an error occurs from the client, hence we only want to set todo when when the array is not empty
         if (response.data.length > 0) {
             setTodo(...response.data)
             setFetching(false)
-            console.log(todo)
         }
         // ELse we set it to an empty object
         else {
