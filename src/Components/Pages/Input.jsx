@@ -11,21 +11,6 @@ import axiosInstance from "../../Helper/AxiosConfig/axiosConfig";
 export const Input = (props) => {
   const { todo, todos, settodos, } = props;
 
-  // const [todoText, setTodoText] = useState("");
-  // const { title} = todo;
-
-
-  // const addTodo = () => {     // Without Formik
-  //   const newTodo = {
-  //     id: crypto.randomUUID(),
-  //     title: "",
-  //     isCompleted: false,
-  //   };
-  //   // console.log(newTodo)
-  //   const updatedTodos = [...todos, newTodo];
-  //   settodos(updatedTodos);
-  //   // localStorage.setItem(todoDBName, JSON.stringify(updatedTodos))
-  // };
 
   const addTodo = async (title) => {
     const newTodo = { title };

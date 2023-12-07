@@ -17,9 +17,6 @@ export const ListSection = (props) => {
   const [show, setShow] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
-//   const [isDeleting, setisDeleting] = useState(false)
-//   const [todoToDelete, setTodoToDelete] = useState(null)
-
   const handleDelete = ()=> {
     setisDeleting(true)
     setTodoToDelete(id)
@@ -42,8 +39,6 @@ export const ListSection = (props) => {
 
   //Edit todo
   function editMode(todo) {
-    // const todoToEdit = todos.find((todo) => todo.id === id);
-    console.log(todo)
     setTodoToEdit(todo)
     setEditMode(true)
     
